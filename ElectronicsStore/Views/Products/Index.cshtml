@@ -8,6 +8,12 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <label>Filter by category:</label> @Html.DropDownList("Category", "All")
+        <input type="submit" value="Filter" />
+        <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+    }
 </p>
 <table class="table">
     <tr>

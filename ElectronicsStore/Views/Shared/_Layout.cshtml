@@ -17,16 +17,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Electronics Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Shop by Category", "Index", "Categories")</li>
                     <li>@Html.ActionLink("View all our Products", "Index", "Products")</li>
                 </ul>
+                @using (Html.BeginForm("Index", "Products", FormMethod.Get, new
+                {
+                    @class =
+                "navbar-form navbar-left"
+                }))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("Search", null, new
+               {
+                   @class = "form-control",
+                   @placeholder
+                        = "Search Products"
+               })
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                }
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -35,7 +50,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My Electronics store</p>
         </footer>
     </div>
 
