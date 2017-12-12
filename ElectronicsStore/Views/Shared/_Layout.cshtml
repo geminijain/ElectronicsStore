@@ -21,11 +21,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Shop by Category", "Index", "Categories")</li>
-                    <li>@Html.ActionLink("View all our Products", "Index", "Products")</li>
+                    <li>@Html.RouteLink("View all our Products", "ProductsIndex")</li>
+                    <li>@Html.ActionLink("Manage Images", "Index", "ProductImages")</li>
                 </ul>
-                @using (Html.BeginForm("Index", "Products", FormMethod.Get, new
+                @using (Html.BeginRouteForm("ProductsIndex", FormMethod.Get, new
                 {
                     @class =
                 "navbar-form navbar-left"

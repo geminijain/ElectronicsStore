@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ElectronicsStore.Models.ProductImage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Upload New Image", "Upload")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @if (!String.IsNullOrWhiteSpace(item.FileName))
+            {
+                <img src="@(Url.Content(Constants.ProductImagePath) + item.FileName)">
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
